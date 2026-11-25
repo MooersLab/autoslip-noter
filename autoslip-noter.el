@@ -1,17 +1,29 @@
 ;;; autoslip-noter.el --- Bridge between autoslip-roam and org-noter -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2026
+;; Copyright (C) 2026 Blaine Mooers
 
-;; Author: Blaine Mooers
+;; Author: Blaine Mooers <blaine-mooers@ou.edu>
+;; Maintainer: Blaine Mooers <blaine-mooers@ou.edu>
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "27.1") (org-roam "2.0") (org-noter "1.5.0") (autoslip-roam "3.0.0"))
-;; Keywords: org-mode, org-roam, zettelkasten, folgezettel, pdf
+;; Keywords: outlines, hypermedia, docs, convenience
 ;; URL: https://github.com/MooersLab/autoslip-noter
+;; SPDX-License-Identifier: GPL-3.0-or-later
+
+;; This file is not part of GNU Emacs.
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
 ;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -228,7 +240,7 @@ note with autoslip-roam."
 ;;;###autoload
 (define-minor-mode autoslip-noter-mode
   "Global minor mode that makes org-noter use folgezettel notes.
-When enabled, M-x org-noter in a document buffer finds or creates the
+When enabled, \\[org-noter] in a document buffer finds or creates the
 autoslip-roam note for that document."
   :global t
   :group 'autoslip-noter

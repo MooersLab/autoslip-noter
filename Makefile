@@ -35,6 +35,7 @@ find-dep = $(firstword $(wildcard $(STRAIGHT_BUILD_DIR)/$(1)) \
 AUTOSLIP_ROAM_PATH := $(firstword $(wildcard $(AUTOSLIP_ROAM_DIR)) $(call find-dep,autoslip-roam))
 ORG_ROAM_PATH := $(call find-dep,org-roam)
 ORG_NOTER_PATH := $(call find-dep,org-noter)
+PACKAGE_LINT_PATH := $(call find-dep,package-lint)
 
 # Required packages are checked by check-deps. Optional ones are added to
 # the load path when they are found.
@@ -51,7 +52,7 @@ BATCH_FLAGS = -Q --batch $(LOAD_PATH)
 # ==============================================================================
 
 .PHONY: all test test-batch test-verbose test-specific check-deps compile \
-        clean help list-tests
+        lint checkdoc clean help list-tests
 
 all: compile
 
@@ -111,6 +112,19 @@ list-tests: ## List the names of the tests
 
 compile: check-deps ## Byte-compile the package
 	$(EMACS) $(BATCH_FLAGS) -f batch-byte-compile $(PACKAGE)
+
+checkdoc: ## Check the docstrings and comments with checkdoc
+	$(EMACS) $(BATCH_FLAGS) \
+		--eval "(progn (require 'checkdoc) (checkdoc-file \"$(PACKAGE)\"))"
+
+lint: checkdoc ## Run checkdoc, then package-lint when it is installed
+	@if [ -n "$(PACKAGE_LINT_PATH)" ]; then \
+		$(EMACS) $(BATCH_FLAGS) -L $(PACKAGE_LINT_PATH) \
+			--eval "(progn (require 'package) (add-to-list 'package-archives '(\"melpa\" . \"https://melpa.org/packages/\")) (package-initialize) (ignore-errors (package-refresh-contents)))" \
+			-l package-lint -f package-lint-batch-and-exit $(PACKAGE); \
+	else \
+		echo "package-lint not found. Skipping. Install it to run this check."; \
+	fi
 
 clean: ## Remove byte-compiled files
 	rm -f *.elc
