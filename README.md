@@ -54,7 +54,7 @@ zettelkasten without manual linking.
 - [org-roam](https://www.orgroam.com/) 2.0 or later, with a working
   database.
 - [org-noter](https://github.com/org-noter/org-noter) 1.5.0 or later.
-- [autoslip-roam](https://github.com/MooersLab/autoslip-roam) 3.0.0 or
+- [autoslip-roam](https://github.com/MooersLab/autoslip-roam) 3.1.0 or
   later. The version must provide the function
   `autoslip-roam-create-child`.
 - A document viewer that org-noter supports. For PDF files,

@@ -5,7 +5,7 @@
 ;; Author: Blaine Mooers <blaine-mooers@ou.edu>
 ;; Maintainer: Blaine Mooers <blaine-mooers@ou.edu>
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "27.1") (org-roam "2.0") (org-noter "1.5.0") (autoslip-roam "3.0.0"))
+;; Package-Requires: ((emacs "27.1") (org-roam "2.0") (org-noter "1.5.0") (autoslip-roam "3.1.0"))
 ;; Keywords: outlines, hypermedia, docs, convenience
 ;; URL: https://github.com/MooersLab/autoslip-noter
 ;; SPDX-License-Identifier: GPL-3.0-or-later
